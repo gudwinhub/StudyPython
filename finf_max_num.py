@@ -1,19 +1,27 @@
 def find_max(*args):
-    n = len(args)
+    global max_num
+    k = n = len(args)
+    max_num = args[k - 1]
+    print(*args)
     if not args:
         return print('вы забыли ввести числа')
-    elif n == 1:
-        return args[0]
-    elif n > 1:
+    if n == 1:
+        max_num = args[0]
+        print(max_num)
+        return max_num
+    else:
+        # if n > 1:
         n -= 1
         max_num = args[n]
         num_tmp = args[n - 1]
-        # print(type(max_num), type(num_tmp), type(args), sep=' ')
-        # find_max(*args[:n])
-    if max_num > num_tmp:
+    if max_num >= num_tmp:
         args = list(args)
-        args[n - 1] = max_num
-        find_max(*args[:n])
+        # args[n-1] = max_num
+    else:
+        max_num = num_tmp
+    find_max(*args[:n])
 
 
-print(find_max(11, 47, 35, 25, 58))
+a = find_max(11, 47, 55, 25, 37)
+# b = find_max(2)
+print(type(a), ' ', a)
